@@ -1,3 +1,4 @@
+require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -12,11 +13,11 @@ const app = express();
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://nicolascondrea:mdnLib18@cluster0.yv6h1xc.mongodb.net/computer_parts_store?retryWrites=true&w=majority";
+
 
 main().catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect(mongoDB);
+  await mongoose.connect(process.env.mongoDB);
 }
 
 // view engine setup
